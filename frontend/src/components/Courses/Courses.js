@@ -110,7 +110,7 @@ function Courses() {
           title="Sample1"
           description={'Sample1'}
           views={23}
-          imageSrc={'sample1'}
+          imageSrc={"https://images.unsplash.com/photo-1495592822108-9e6261896da8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"}
           id={'sample1'}
           creator="sample1 creator"
           lectureCount={2}
