@@ -15,6 +15,7 @@ import { CgGoogle, CgYoutube } from 'react-icons/cg';
 import { SiCoursera, SiUdemy } from 'react-icons/si';
 import { DiAws } from 'react-icons/di';
 import vg from '../assests/images/bg.png';
+import introVideo from '../assests/videos/video1.mp4'
 function Home() {
   return (
     <div className="home">
@@ -26,33 +27,44 @@ function Home() {
           alignItems="center"
           spacing={['16', '56']}
         >
-          <VStack width={'full'} alignItems={['centre', 'flex-end']}>
+          <VStack width={'full'} alignItems={['centre', 'flex-end']} spacing="8">
             <Heading children="Learn from the experts" size={'2xl'} />
-            <Text children="Find Valueable Content At Reasonable Price" />
+            <Text alignItems={['center', 'left']} fontSize="2xl" children="Find Valueable Content At Reasonable Price" />
             <Link to="/courses">
               <Button size={'lg'} colorScheme={'yellow'}>
                 Explore now
               </Button>
             </Link>
           </VStack>
-          <Image boxSize={'md'} src={vg} objectFit="contain" />
+          <Image className="vector-graphics" boxSize={'md'} src={vg} objectFit="contain" />
         </Stack>
       </div>
 
-      <Box>
+      <Box padding={"8"} bg="blackAplha.800">
         <Heading
           textAlign={"center"}
           fontFamily="body"
           color={'yellow.400'}
           children="OUR BRANDS"
         />
-        <HStack>
+        <HStack className="brandsBanner" justifyContent={"space-evenly"} marginTop="4">
             <CgGoogle />
             <CgYoutube />
             <SiCoursera />
             <SiUdemy />
             <DiAws />
         </HStack>
+        <div className="container2">
+            <video 
+            autoPlay
+            controls
+            controlsList="nodownload nofullscreen noremoteplayback"
+            disablePictureInPicture = {true}
+            disableRemotePlayback = {true}
+            src={introVideo}
+            >
+            </video>
+        </div>
       </Box>
     </div>
   );
