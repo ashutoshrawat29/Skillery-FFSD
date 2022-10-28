@@ -47,7 +47,6 @@ const Course = ({
         />
       </HStack>
       <Heading
-        textAlign={'center'}
         size="xs"
         textTransform="uppercase"
         children={`Lectures - ${lectureCount}`}

@@ -10,6 +10,7 @@ import PaymentFail from './components/Payments/PaymentFail';
 import PaymentSuccess from './components/Payments/PaymentSuccess';
 import Subscribe from './components/Payments/Subscribe';
 import Request from './components/Request/Request';
+import CreateCourse from './components/Admin/CreateCourse';
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,9 @@ function App() {
         <Route path="/*" element={<NotFound />} />
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
         <Route path="/paymentfail" element={<PaymentFail />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/createcourse" element={<CreateCourse />} />
       </Routes>
       <Footer />
     </BrowserRouter>

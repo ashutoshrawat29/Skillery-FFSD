@@ -86,11 +86,11 @@ function Header() {
                 ) : (
                   <>
                     <Link to="/login">
-                      <Button colorScheme="yellow">Login</Button>
+                      <Button colorScheme="yellow" onClick={onClose}>Login</Button>
                     </Link>
                     <p>OR</p>
                     <Link to="/register">
-                      <Button colorScheme="yellow">Sign Up</Button>
+                      <Button colorScheme="yellow" onClick={onClose}>Sign Up</Button>
                     </Link>
                   </>
                 )}
