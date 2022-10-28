@@ -12,7 +12,6 @@ function Contact() {
         message: false,
     });
     function ValidateEmail(x) {
-
         var atposition = x.indexOf("@");
         var dotposition = x.lastIndexOf(".");
         if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
@@ -32,15 +31,12 @@ function Contact() {
 
         }
         else if (ValidateEmail(email) === false) {
-
             setError({ ...error, email: true });
             return;
-
         }
         else if (message === '') {
             setError({ ...error, message: true });
             return;
-
         }
         console.log(name, email, message);
     }
@@ -53,7 +49,6 @@ function Contact() {
                     <FormControl my="4" isInvalid={error.name}>
                         <FormLabel htmlFor='name' children="Name" />
                         <Input
-                            // required
                             id="name"
                             value={name}
                             onChange={e => {
@@ -70,47 +65,30 @@ function Contact() {
                             focusBorderColor='yellow.500'
                         />
                         <FormErrorMessage>Name is required.</FormErrorMessage>
-
                     </FormControl>
                     <FormControl my="4" isInvalid={error.email}>
                         <FormLabel htmlFor='email' children="Email Address" />
                         <Input
-                            // required
                             id="email"
                             value={email}
                             onChange={e => {
                                 setEmail(e.target.value);
-
-                                if (ValidateEmail(e.target.value) === false) {
-                                    setError({ ...error, email: true });
-                                }
-                                else {
-                                    setError({ ...error, email: false });
-
-                                }
-
                                 if(e.target.value === ''){
-                                setError({...error, email: true});
+                                    setError({...error, email: true});
                                 }
                                 else{
-                                setError({...error, email: false});
+                                    setError({...error, email: false});
                                 }
-
                             }}
                             placeholder="abc@gmail.com"
-                            // type="email"
                             focusBorderColor='yellow.500'
                         />
-                        {!email.length == 0 && <FormErrorMessage>Not a valid email type</FormErrorMessage>}
-
+                        {!email.length === 0 && <FormErrorMessage>Not a valid email type</FormErrorMessage>}
                         {email.length === 0 && <FormErrorMessage>Email is required.</FormErrorMessage>}
-
                     </FormControl>
-
                     <FormControl my="4" isInvalid={error.message}>
                         <FormLabel htmlFor='message' children="Message" />
                         <Textarea
-                            // required
                             id="message"
                             value={message}
                             onChange={e => {
@@ -126,8 +104,7 @@ function Contact() {
                             placeholder="Your Message..."
                             focusBorderColor='yellow.500'
                         />
-                    <FormErrorMessage>Message cant be empty</FormErrorMessage>
-
+                    <FormErrorMessage>Message is required.</FormErrorMessage>
                     </FormControl>
                     <Button my="4" colorScheme="yellow" type="submit">
                         Send Message
