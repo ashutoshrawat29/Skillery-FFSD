@@ -56,16 +56,23 @@ const Course = ({
         textTransform="uppercase"
         children={`Views - ${views}`}
       />
-      <Stack direction={["column", "row"]} alignItems="center">
+      <Stack direction={['column', 'row']} alignItems="center">
         <Link to={`/courses/${id}`}>
           <Button colorScheme="yellow"> Watch Now </Button>
         </Link>
-        <Button variant="ghost" colorScheme="yellow" onClick={() =>addToPlaylistHandler(id)}> Add to playlist</Button>
+        <Button
+          variant="ghost"
+          colorScheme="yellow"
+          onClick={() => addToPlaylistHandler(id)}
+        >
+          {' '}
+          Add to playlist
+        </Button>
       </Stack>
     </VStack>
   );
 };
-function Courses() {
+function Courses({ courses }) {
   const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState('');
   const categories = [
@@ -78,8 +85,8 @@ function Courses() {
     'App Development',
   ];
   const addToPlaylistHandler = () => {
-    console.log("Added to playlist")
-  }
+    console.log('Added to playlist');
+  };
   return (
     <Container minH={'95vh'} maxW="container.lg" paddingY="8">
       <Heading children="All Courses" m={'8'} />
@@ -105,16 +112,21 @@ function Courses() {
         justifyContent={['flex-start', 'space-evenly']}
         alignItems={['centre', 'flex-start']}
       >
-        <Course
-          title="Sample1"
-          description={'Sample1'}
-          views={23}
-          imageSrc={"https://images.unsplash.com/photo-1495592822108-9e6261896da8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"}
-          id={'sample1'}
-          creator="sample1 creator"
-          lectureCount={2}
-          addToPlaylistHandler={addToPlaylistHandler}
-        />
+        {courses.map(course => {
+          return (
+            <Course
+              title={course.title}
+              description={course.description}
+              views={23}
+              imageSrc={course.imageSrc}
+              id={course.id}
+              key={course.id}
+              creator={course.creator}
+              lectureCount={2}
+              addToPlaylistHandler={addToPlaylistHandler}
+            />
+          );
+        })}
       </Stack>{' '}
     </Container>
   );

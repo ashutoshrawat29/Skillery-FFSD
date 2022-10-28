@@ -13,7 +13,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { HStack, VStack } from '@chakra-ui/layout';
 import { Link } from 'react-router-dom';
 function Header() {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const user = {
     role: "admin"
   }
@@ -65,16 +65,20 @@ function Header() {
                   <>
                     <VStack>
                       <HStack>
-                        <Link to="/profile">
+                        <Link to="/profile" onClick={onClose}>
                           <Button variant="ghost" colorScheme="yellow">
                             Profile
                           </Button>
                         </Link>
-                        <RiLogoutBoxLine />
-                        <Button variant="ghost">Logout</Button>
+                        <Link to="/" onClick={onClose}>
+                        <Button variant="ghost">
+                          <RiLogoutBoxLine style={{margin : "4px"}} />
+                          Logout
+                        </Button>
+                        </Link>
                       </HStack>
                       {user && user.role === 'admin' && (
-                        <Link to="/admin/dashboard">
+                        <Link to="/admin/dashboard" onClick={onClose}>
                           <Button colorScheme={"purple"} variant="ghost">
                             <RiDashboardFill style={{margin : "4px"}} />
                             Dashboard
