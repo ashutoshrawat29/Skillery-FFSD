@@ -1,18 +1,4 @@
-import {
-  Box,
-  Button,
-  Container,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Heading,
-  HStack,
-  Input,
-  Radio,
-  RadioGroup,
-  Textarea,
-  VStack,
-} from '@chakra-ui/react';
+import { Box, Button, Container, FormControl, FormErrorMessage, FormLabel, Heading, HStack, Input, Radio, RadioGroup, Textarea, VStack, } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -27,20 +13,39 @@ function Request() {
     course: false,
     level: false,
   });
+  function ValidateEmail(x) {
+
+    var atposition = x.indexOf("@");
+    var dotposition = x.lastIndexOf(".");
+    if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
+        return false;
+    }
+    return true;
+  } 
   function submitHandler(e) {
     e.preventDefault();
     if (name === '') {
         setError({ ...error, name: true });
+        return;
     }
     else if(email === ''){
         setError({ ...error, email: true });
+        return;
     }
     else if(course === ''){
         setError({ ...error, course: true });
+        return;
+    }
+    else if(ValidateEmail(email) === false){
+        setError({ ...error, email: true });
+        return;
     }
     else if(level === ''){
         setError({ ...error, level: true });
-    }
+        return;
+      }
+    console.log(name, email, course,level);
+
   }
   return (
     <Container minH={'95vh'} maxW="container.lg" paddingY="8">
@@ -74,6 +79,13 @@ function Request() {
               value={email}
               onChange={e => {
                 setEmail(e.target.value);
+                if(ValidateEmail(e.target.value) === false){
+                  setError({...error, email: true});
+              }
+              else{
+                  setError({...error, email: false});
+
+              }
                 if (e.target.value === '') {
                   setError({ ...error, email: true });
                 }
@@ -82,10 +94,12 @@ function Request() {
                 }
               }}
               placeholder="abc@gmail.com"
-              type="email"
+              // type="email"
               focusBorderColor="yellow.500"
             />
-            <FormErrorMessage>Email is required.</FormErrorMessage>
+          {!email.length==0 &&<FormErrorMessage>Not a valid email type</FormErrorMessage>}
+
+          { email.length===0 && <FormErrorMessage>Email is required.</FormErrorMessage>}
           </FormControl>
           <FormControl my="4" isInvalid={error.course}>
             <FormLabel htmlFor="course" children="Course" />
