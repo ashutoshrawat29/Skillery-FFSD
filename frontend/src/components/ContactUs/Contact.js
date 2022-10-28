@@ -83,7 +83,7 @@ function Contact() {
                             placeholder="abc@gmail.com"
                             focusBorderColor='yellow.500'
                         />
-                        {!email.length === 0 && <FormErrorMessage>Not a valid email type</FormErrorMessage>}
+                        {email.length !== 0 && <FormErrorMessage>Not a valid email type</FormErrorMessage>}
                         {email.length === 0 && <FormErrorMessage>Email is required.</FormErrorMessage>}
                     </FormControl>
                     <FormControl my="4" isInvalid={error.message}>
