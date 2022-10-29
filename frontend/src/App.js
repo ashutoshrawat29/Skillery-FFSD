@@ -11,6 +11,9 @@ import PaymentSuccess from './components/Payments/PaymentSuccess';
 import Subscribe from './components/Payments/Subscribe';
 import Request from './components/Request/Request';
 import CreateCourse from './components/Admin/CreateCourse';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+
 function App() {
   const [courses, setCourses] = useState([
     {
@@ -40,6 +43,8 @@ function App() {
         <Route path="/*" element={<NotFound />} />
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
         <Route path="/paymentfail" element={<PaymentFail />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
 
         {/* Admin Routes */}
         <Route path="/admin/createcourse" element={<CreateCourse coursesHandler={coursesHandler} />} />
