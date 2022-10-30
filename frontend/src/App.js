@@ -4,6 +4,7 @@ import Contact from './components/ContactUs/Contact';
 import Courses from './components/Courses/Courses';
 import Home from './components/Home';
 import Footer from './components/Layout/Footer/Footer';
+import Aboutus from './components/AboutUs/Aboutus';
 import Header from './components/Layout/Header/Header';
 import NotFound from './components/Layout/NotFound/NotFound';
 import PaymentFail from './components/Payments/PaymentFail';
@@ -39,6 +40,7 @@ function App() {
         <Route path="/courses" element={<Courses courses={courses} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/request" element={<Request />} />
+        <Route path="/about" element={<Aboutus />} />
         <Route path="/subscribe" element={<Subscribe />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
