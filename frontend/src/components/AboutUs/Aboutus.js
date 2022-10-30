@@ -3,6 +3,13 @@ import { Image } from '@chakra-ui/image';
 import { useMediaQuery } from '@chakra-ui/media-query';
 import { Stack, HStack, Flex, Box, Text } from '@chakra-ui/layout';
 import './About.css';
+import a1 from '../../assests/images/avataricons/1co-f.svg'
+import a2 from '../../assests/images/avataricons/2co-f.svg'
+import a3 from '../../assests/images/avataricons/3co-f.svg'
+import a4 from '../../assests/images/avataricons/4co-f.svg'
+import a5 from '../../assests/images/avataricons/5co-f.svg'
+import aboutUsImg from '../../assests/images/aboutus.jpg'
+
 
 function Aboutus() {
   const [isNotSmallerScreen] = useMediaQuery('(min-width:600px)');
@@ -19,7 +26,7 @@ function Aboutus() {
           <div className="imageabout">
             <Image
               paddingTop={30}
-              src="http://localhost:8080/resources/aboutus.jpg"
+              src={aboutUsImg}
             />{' '}
           </div>
           <div>
@@ -59,7 +66,7 @@ function Aboutus() {
             _hover={{ bg: 'teal.400' }}
             marginLeft={20}
           >
-            <Image src="http://localhost:8080/resources/avataricons/5co-f.svg" />
+            <Image src= {a5} />
             <Text color="black" p="4" fontSize="l" fontWeight="semibold">
               Abhay Ray
             </Text>
@@ -78,7 +85,7 @@ function Aboutus() {
             _hover={{ bg: 'teal.400' }}
             marginLeft={10}
           >
-            <Image src="http://localhost:8080/resources/avataricons/1co-f.svg" />
+            <Image src= {a1} />
             <Text color="black" p="4" fontSize="l" fontWeight="semibold">
               Shubham Chandwani
             </Text>
@@ -97,7 +104,7 @@ function Aboutus() {
             _hover={{ bg: 'teal.400' }}
             marginLeft={10}
           >
-            <Image src="http://localhost:8080/resources/avataricons/2co-f.svg" />
+            <Image src={a2} />
             <Text color="black" p="4" fontSize="l" fontWeight="semibold">
               Tanmay Pawar
             </Text>
@@ -116,7 +123,7 @@ function Aboutus() {
             _hover={{ bg: 'teal.400' }}
             marginLeft={10}
           >
-            <Image src="http://localhost:8080/resources/avataricons/4co-f.svg" />
+            <Image src={a4} />
             <Text color="black" p="4" fontSize="l" fontWeight="semibold">
               Ashutosh Rawat
             </Text>
@@ -135,7 +142,7 @@ function Aboutus() {
             _hover={{ bg: 'teal.400' }}
             marginLeft={10}
           >
-            <Image src="http://localhost:8080/resources/avataricons/3co-f.svg" />
+            <Image src={a3} />
             <Text color="black" p="4" fontSize="l" fontWeight="semibold">
               Tanmay Umredkar
             </Text>
