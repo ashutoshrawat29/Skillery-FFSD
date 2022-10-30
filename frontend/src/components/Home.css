@@ -51,3 +51,15 @@
 .course:hover{
   transform: translateY(-10px);
 }
+
+.footer__icon {
+  font-size: 1.75rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.footer__icon :hover {
+  color: yellow;
+  background-color: #090808;
+  transition: all 0.2s;
+}

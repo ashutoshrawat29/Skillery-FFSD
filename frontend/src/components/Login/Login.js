@@ -69,14 +69,10 @@ const Login = () => {
 
 
     return (
-        <Container minH={'95vh'} maxW="container.sm" paddingY="8">
+        <Container minH={'85vh'} maxW="container.sm" paddingY="8">
             <VStack h="full" justifyContent="center" spacing="16">
 
                 <Heading children="Welcome to Skillery" m={'8'} />
-
-                {/* <div className='heading' m={'8'}>
-                    Welcome to courseBundler
-                </div> */}
 
                 <form onSubmit={submitHandler}style={{width: "100%"}}>
                 <FormControl isInvalid={error.enteredEmail}>

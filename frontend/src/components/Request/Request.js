@@ -1,6 +1,22 @@
-import { Box, Button, Container, FormControl, FormErrorMessage, FormLabel, Heading, HStack, Input, Radio, RadioGroup, Textarea, VStack, } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Heading,
+  HStack,
+  Input,
+  Radio,
+  RadioGroup,
+  Textarea,
+  useDisclosure,
+  VStack,
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SuccessModal from '../Layout/SuccessModal/SuccessModal';
 
 function Request() {
   const [name, setName] = useState('');
@@ -13,40 +29,46 @@ function Request() {
     course: false,
     level: false,
   });
+  const { isOpen, onOpen, onClose } = useDisclosure();
   function ValidateEmail(x) {
-    var atposition = x.indexOf("@");
-    var dotposition = x.lastIndexOf(".");
-    if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
-        return false;
+    var atposition = x.indexOf('@');
+    var dotposition = x.lastIndexOf('.');
+    if (
+      atposition < 1 ||
+      dotposition < atposition + 2 ||
+      dotposition + 2 >= x.length
+    ) {
+      return false;
     }
     return true;
-  } 
+  }
   function submitHandler(e) {
     e.preventDefault();
     if (name === '') {
-        setError({ ...error, name: true });
-        return;
-    }
-    else if(email === ''){
-        setError({ ...error, email: true });
-        return;
-    }
-    else if(ValidateEmail(email) === false){
+      setError({ ...error, name: true });
+    } else if (email === '') {
       setError({ ...error, email: true });
-      return;
+    } else if (ValidateEmail(email) === false) {
+      setError({ ...error, email: true });
+    } else if (course === '') {
+      setError({ ...error, course: true });
+    } else if (level === '') {
+      setError({ ...error, level: true });
+    } else {
+      onOpen();
     }
-    else if(course === ''){
-        setError({ ...error, course: true });
-        return;
-    }
-    else if(level === ''){
-        setError({ ...error, level: true });
-        return;
-    }
-    console.log(name, email, course,level);
   }
   return (
     <Container minH={'95vh'} maxW="container.lg" paddingY="8">
+      <SuccessModal
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        successText={'Your request has been sent.'}
+        buttonText={'See Available Courses'}
+        buttonLink={'/courses'}
+        colorTheme={'yellow'}
+      />
       <VStack h="full" justifyContent="center" spacing="16">
         <Heading children="Request New Course" m={'8'} />
         <form style={{ width: '100%' }} onSubmit={submitHandler}>
@@ -59,9 +81,8 @@ function Request() {
                 setName(e.target.value);
                 if (e.target.value === '') {
                   setError({ ...error, name: true });
-                }
-                else{
-                    setError({ ...error, name: false });
+                } else {
+                  setError({ ...error, name: false });
                 }
               }}
               placeholder="Abhay Ray"
@@ -77,18 +98,21 @@ function Request() {
               value={email}
               onChange={e => {
                 setEmail(e.target.value);
-                if(e.target.value === ''){
-                  setError({...error, email: true});
-              }
-                else{
-                    setError({ ...error, email: false });
+                if (e.target.value === '') {
+                  setError({ ...error, email: true });
+                } else {
+                  setError({ ...error, email: false });
                 }
               }}
               placeholder="abc@gmail.com"
               focusBorderColor="yellow.500"
             />
-          {email.length!==0 &&<FormErrorMessage>Not a valid email type</FormErrorMessage>}
-          {email.length===0 && <FormErrorMessage>Email is required.</FormErrorMessage>}
+            {email.length !== 0 && (
+              <FormErrorMessage>Not a valid email type</FormErrorMessage>
+            )}
+            {email.length === 0 && (
+              <FormErrorMessage>Email is required.</FormErrorMessage>
+            )}
           </FormControl>
           <FormControl my="4" isInvalid={error.course}>
             <FormLabel htmlFor="course" children="Course" />
@@ -99,9 +123,8 @@ function Request() {
                 setCourse(e.target.value);
                 if (e.target.value === '') {
                   setError({ ...error, course: true });
-                }
-                else{
-                    setError({ ...error, course: false });
+                } else {
+                  setError({ ...error, course: false });
                 }
               }}
               placeholder="Explain the course..."

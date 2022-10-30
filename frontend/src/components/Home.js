@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Box,
   Button,
@@ -16,7 +16,13 @@ import { SiCoursera, SiUdemy } from 'react-icons/si';
 import { DiAws } from 'react-icons/di';
 import vg from '../assests/images/bg.png';
 import introVideo from '../assests/videos/video1.mp4'
+import ReactVisibilitySensor from 'react-visibility-sensor';
+
 function Home() {
+  const videoRef = useRef();
+  const reactVisibilitySensorHandler = (isVisible) => {
+    isVisible? videoRef.current.play() : videoRef.current.pause();
+  }
   return (
     <div className="home">
       <div className="container">
@@ -55,15 +61,18 @@ function Home() {
             <DiAws />
         </HStack>
         <div className="container2">
-            <video 
-            autoPlay
-            controls
-            controlsList="nodownload nofullscreen noremoteplayback"
-            disablePictureInPicture = {true}
-            disableRemotePlayback = {true}
-            src={introVideo}
-            >
-            </video>
+          <ReactVisibilitySensor onChange={reactVisibilitySensorHandler}>
+              <video 
+              autoPlay
+              controls
+              controlsList="nodownload nofullscreen noremoteplayback"
+              disablePictureInPicture = {true}
+              disableRemotePlayback = {true}
+              src={introVideo}
+              ref={videoRef}
+              >
+              </video>
+          </ReactVisibilitySensor>
         </div>
       </Box>
     </div>

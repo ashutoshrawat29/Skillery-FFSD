@@ -1,3 +1,4 @@
+import { HStack, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 
 import {
@@ -7,33 +8,39 @@ import {
   FaFacebook,
   FaGithub,
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-import './Footer.css';
+import '../../Home.css';
 
 function Footer() {
   return (
-    <div>
-      <p className="footer">
-        {' '}
-        Skillery was a dream which is envisioned to make programming education
-        easy and accessible for Indian students. We designed a program which is
-        market oriented, fun to learn and focus on setting a strong base for a
-        programming career. Our students are an asset for any team from day one,
-        and trained to be great coders.
-      </p>
-      <div className="Footer">
-        <FaGithub className="footer__icon" fontSize="large" href="/" />
-        <FaInstagram className="footer__icon" fontSize="large" href="/" />
-        <FaTwitter className="footer__icon" fontSize="large" href="/" />
-        <FaYoutube className="footer__icon" fontSize="large" href="/" />
-        <FaFacebook className="footer__icon" fontSize="large" href="/" />
-      </div>
-      <div className="footer-bottom">
-        <p>
-          copyright &copy; <a href="#">Skillery</a>{' '}
-        </p>
-      </div>
-    </div>
+    <>
+      <VStack margin={4}>
+        <HStack margin={1}>
+          <Link>
+            <FaGithub className="footer__icon" />
+          </Link>
+          <Link>
+            <FaInstagram className="footer__icon" />
+          </Link>
+          <Link>
+            <FaTwitter className="footer__icon" />
+          </Link>
+          <Link>
+            <FaYoutube className="footer__icon" />
+          </Link>
+          <Link>
+            <FaFacebook className="footer__icon" />
+          </Link>
+        </HStack>
+        <HStack>
+          <Text children="copyright&copy;" fontSize="sm" />
+          <Link to="/">
+            <Text children="Skillery" color="yellow" fontSize="xl" style={{"fontWeight" : "bold"}} />
+          </Link>
+        </HStack>
+      </VStack>
+    </>
   );
 }
 

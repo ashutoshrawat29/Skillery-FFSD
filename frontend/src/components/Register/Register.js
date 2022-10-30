@@ -11,7 +11,6 @@ import {
 
 import React, { useState } from 'react';
 
-// import './SignUp';
 
 const Register = (event) => {
     const [enteredName, setEnteredName] = useState('');

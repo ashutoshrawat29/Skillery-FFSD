@@ -13,7 +13,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { HStack, VStack } from '@chakra-ui/layout';
 import { Link } from 'react-router-dom';
 function Header() {
-  const isAuthenticated = true;
+  const isAuthenticated = false;
   const user = {
     role: "admin"
   }
