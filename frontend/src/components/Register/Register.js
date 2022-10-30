@@ -28,6 +28,15 @@ const Register = (event) => {
         enteredcnfPwd: false
     })
 
+    function ValidateEmail(x) {
+        var atposition = x.indexOf("@");
+        var dotposition = x.lastIndexOf(".");
+        if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
+            return false;
+        }
+        return true;
+    }
+
 
     const NameChangeHandler = (event) => {
         setEnteredName(event.target.value);
@@ -82,6 +91,10 @@ const Register = (event) => {
             setError({...error,enteredEmail:'Email is Required'});
         }
 
+        else if(ValidateEmail(enteredEmail) === false) {
+            setError({ ...error, enteredEmail: 'Enter valid Email Id' });
+        }
+
         else if(enteredPwd===''){
             setError({...error,enteredPwd: true})
         }
@@ -128,7 +141,7 @@ const Register = (event) => {
                 <FormLabel htmlFor="email" children="Email Address"/>
                 <Input type="text" id="email" name="email" value={enteredEmail} onChange={EmailChangeHandler} 
                 focusBorderColor='yellow.500'/>
-                <FormErrorMessage>Email is Required.</FormErrorMessage>
+                <FormErrorMessage>{error.enteredEmail}</FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={error.enteredPwd}>
                 <FormLabel htmlFor="pwd" children="Enter Password"/>

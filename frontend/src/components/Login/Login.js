@@ -24,6 +24,16 @@ const Login = () => {
         enteredPwd: false
     })
 
+    function ValidateEmail(x) {
+        var atposition = x.indexOf("@");
+        var dotposition = x.lastIndexOf(".");
+        if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
+            return false;
+        }
+        return true;
+    }
+
+
     const EmailChangeHandler = (event) => {
         setEnteredEmail(event.target.value);
         if(event.target.value===''){
@@ -55,7 +65,13 @@ const Login = () => {
 
         else if(enteredPwd===''){
             setError({...error,enteredPwd: true})
+
         }
+
+        else if(ValidateEmail(enteredEmail) === false) {
+            setError({ ...error, enteredEmail: 'Enter valid Email Id' });
+        }
+
         else{
 
         const submittedData = {
