@@ -27,7 +27,6 @@ function App() {
     },
   ]);
   const coursesHandler = newCourse => {
-    console.log(courses);
     setCourses(previousList => {
       return [...previousList, newCourse];
     });
