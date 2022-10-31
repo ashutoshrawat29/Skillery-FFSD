@@ -11,7 +11,7 @@ function Contact() {
         email: false,
         message: false,
     });
-    function ValidateEmail(x) {
+    function validateEmail(x) {
         var atposition = x.indexOf("@");
         var dotposition = x.lastIndexOf(".");
         if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
@@ -23,20 +23,15 @@ function Contact() {
         e.preventDefault();
         if (name === '') {
             setError({ ...error, name: true });
-            return;
         }
         else if (email === '') {
             setError({ ...error, email: true });
-            return;
-
         }
-        else if (ValidateEmail(email) === false) {
+        else if (validateEmail(email) === false) {
             setError({ ...error, email: true });
-            return;
         }
         else if (message === '') {
             setError({ ...error, message: true });
-            return;
         }
         console.log(name, email, message);
     }
